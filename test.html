@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <!-- <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet"> -->
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Noto+Sans+TC:wght@300&family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
+   <!-- <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Noto+Sans+TC:wght@300&display=swap" rel="stylesheet"> -->
+   <style type="text/css">
+      body{
+         max-height: 8000px;
+         /* background-image: url(C:\\Users\\User\\OneDrive\\桌面\\999.png); */
+         background-image: url(C:\\Users\\User\\OneDrive\\桌面\\666.png);
+         background-position: top center;
+         margin: 0;
+         /*width: 1000px;*/
+         /* background: #86DDFB; */
+      }
+      .dtop{
+         /* background-image: url(C:\\Users\\User\\OneDrive\\桌面\\999.png); */
+         height: 180px;
+      }
+      p{
+         padding-top: 20px;
+         text-align: center;
+         font-size: 70px;
+         color:	#4169e1;
+      }
+      main{
+         display: flex;
+         flex-wrap: wrap;
+         width: 1400px;
+         /*height: 1000px;*/
+         max-height: 3000px;
+         margin: 0 auto;
+         
+      }
+      .container{
+         margin: 0 auto;
+         display: flex;
+         flex-wrap: wrap;
+         justify-content: center;
+         /*align-items: center; */
+         width: 1400px;
+         max-height: 8000px;
+         /*background: red;*/
+      }
+      #d{
+         border: 2px solid;
+         border-color: whitesmoke;
+         border-radius: 13px;
+         margin: 15px;
+         height: 160px;
+         width: 210px;
+         background: #00bfff;
+         
+      }
+      #d:hover{
+         /* background: #b0c4de; */
+         /* background: rgb(126, 121, 223); */
+         cursor: pointer;
+         transform: scale(1.2,1.2);
+         transition: all 1s ease-out;
+         
+      }
+      #dh{
+         /* opacity: 0; */
+         display: none;
+         font-family: 'Fjalla One', sans-serif;
+      }
+      #dh2{
+         text-align: center;
+         color: #fffafa;
+         font-family: 'Noto Sans TC', sans-serif;
+         margin-top: 20px;
+      }
+      #mc2{
+         border-radius: 10px;
+         margin: 0 auto;
+         display: flex;
+         flex-wrap: wrap;
+         /* justify-content: center; */
+         /*align-items: center; */
+         width: 1200px;
+         height: 1800px;
+         /* background: rgb(126, 121, 223); */
+         background: #5AC1F5;
+         /* background: whitesmoke; */
+      }
+      #c{
+         background: white;
+         height: 500px;
+         width: 0 auto;
+         background-color: aquamarine;
+      }
+      #cd1{
+         margin: 0 auto;
+      }
+      #cd2{
+         margin: 0 auto;
+      }
+      #cd3{
+         margin: 0 auto;
+      }
+   </style>
+</head>
+<body onload="getdata();">
+   <div class="dtop" style="font-family: 'Fjalla One', sans-serif;">
+      <!-- <button onclick="getdata();">b</button> -->
+      <p><a href="file:///C:/Users/User/OneDrive/%E6%A1%8C%E9%9D%A2/%E5%A4%A7%E5%9B%9B%E8%AA%B2%E7%A8%8B%E7%B8%BD%E8%A6%BD/%E9%80%B2%E9%9A%8E%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91(java)/Final_Project/map.html" style="text-decoration: none; color:	#4169e1;">Taiwan Weather</a></p>
+   </div>
+   <main>
+      <div class="container">
+         <div id="d" onclick="change();"></div>
+      </div>
+      <div class="container" id="mc2" style="display: none;" ondblclick="changeback();">
+         
+         <p id="pname" style="color: white;"></p>
+         <p id="pwx" style="color: #e6e6fa; font-family: 'Roboto Mono', monospace; font-size: 35px;"></p>
+
+         <div id="cd1" style="height: 25%; width: 30%;">
+            <canvas id="myChart" width="200" height="200"></canvas>
+         </div>
+         <div id="cd2" style="height: 25%; width: 30%;">
+            <canvas id="myChart2" width="200" height="200"></canvas>
+         </div>
+         <div id="cd3" style="height: 25%; width: 30%;"><h5 style="text-align: center; color: whitesmoke">降雨機率</h5>
+            <canvas id="myChart3" width="200" height="200"></canvas>
+         </div>
+         
+      </div>
+   </main>
+   
+   <script src="./test.js"></script>
+</body>
+</html>
