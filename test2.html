@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		var xhr = new XMLHttpRequest();
+		var url = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=rdec-key-123-45678-011121314";
+
+		xhr.onreadystatechange = function() {
+		  if (xhr.readyState === 4 && xhr.status === 200) {
+		    var res = JSON.parse(xhr.responseText);
+		    console.log(res);
+		    console.log(res.records.location[0].weatherElement[4].time[1].parameter.parameterName);
+		  }
+		};
+
+		xhr.open("GET", url, true);
+		xhr.send();
+
+
+		$(document).ready(function() {
+        	var s = fetchData();
+        	console.log(s);
+      	});
+		// fetchData();
+   
+    
+    
+	      function fetchData() {
+	        $.ajax({
+	          url: 'https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=rdec-key-123-45678-011121314',
+	          type: 'GET',
+	          dataType: 'json',
+	          success: function(data) {
+	            // displayData(data);
+	            console.log(data);
+				var test = big(displayData(data));
+				// console.log(test);
+	            
+	          },
+	          error: function(xhr, status, error) {
+	            console.error('發生錯誤:', error);
+	            
+	          }
+	        });
+	        
+	      }
+
+	      function displayData(data) {
+	        var output = $('#output');
+
+	        // 清空原有內容
+	        output.empty();
+ 
+	        var place_name = ["chiayi_country","new_taipei_city","chiayi_city","hsinchu_country","hsinchu_city","taipei_city","tainan_city","yilan_country","miaoli_country","yunlin_country","hualien_country","taichung_city","taitung_country","taoyuan_country","nantou_country","kaohsiung_city","kinmen_country","pingtung_country","keelung_city"
+,"penghu_country","changhua_country","lienchiang_country"];
+	        var c = 0;        
+	        var myArray = new Array();
+	        
+
+	        // 逐筆顯示資料
+	        $.each(data.records.location, function(index, product) {
+	          var place = product.locationName;
+	          var max = product.weatherElement[4].time[1].parameter.parameterName;
+	          var low = product.weatherElement[2].time[1].parameter.parameterName;
+	          var condition = product.weatherElement[0].time[1].parameter.parameterName;
+	          // console.log(place);
+	          
+	          
+	         
+	          myArray[c] = [place_name[c],place,low,max,condition];
+	          
+	          c++;
+	          	          
+	        });
+	    	console.log(c);
+	    	console.log(myArray);
+	    	return myArray;
+	    	// console.log(place_name);
+	       }
+
+
+	       function arrayToObject(arr) {
+			  	var obj = {};
+			  
+			  	obj["tag"] = arr[0];
+				obj["place"] = arr[1];
+				obj["low"] = arr[2];
+				obj["high"] = arr[3];
+				obj["weather"] = arr[4];
+
+			  
+			  	return obj;
+			}
+			
+
+			function big(x) {
+				var o = [];
+				var j;
+				for (var i = 0; i < x.length; i++) {
+					j = arrayToObject(x[i]);
+					o.push(j);
+				}
+				return o;
+			}
+ 	
+
+	</script>
+</body>
+</html>
+
